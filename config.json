@@ -1,4 +1,6 @@
 {
   "philipsHueUserName": "",
-  "smartPlugId": -1
+  "smartPlugId": -1,
+  "mobileAlertsUrl": "https://www.data199.com/api/pv1/device/lastmeasurement",
+  "mobileAlertsDeviceIds": ""
 }
