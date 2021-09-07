@@ -8,10 +8,11 @@ import (
     "log"
 )
 
-func GetTemperature() float64 {
+func GetTemperature(deviceId string) float64 {
+    log.Println("Checking temperature")
     configFile := config.Load()
     url := configFile.MobileAlertsUrl
-    parameters := "deviceids=" + configFile.MobileAlertsDeviceIds
+    parameters := "deviceids=" + deviceId
 
     client := resty.New()
     response, e := client.R().

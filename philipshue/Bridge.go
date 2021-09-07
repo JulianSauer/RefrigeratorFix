@@ -9,9 +9,11 @@ import (
 )
 
 const USER = "RefrigeratorFix"
+
 var cachedBridge *huego.Bridge
 
 func Register() string {
+    log.Println("Trying to register")
     bridge := getBridge()
 
     log.Printf("Bridge found at %s, please press the link button within 1 minute!\n", bridge.Host)
@@ -20,7 +22,7 @@ func Register() string {
     var e error
     for i := 0; i < 12; i++ {
         time.Sleep(5 * time.Second)
-        
+
         currentUser, e = bridge.CreateUser(USER)
         if e == nil {
             log.Printf("New user %s created\n", currentUser)
@@ -35,13 +37,18 @@ func Register() string {
     return ""
 }
 
-func Login() *huego.Bridge {
+func Login() {
+    log.Println("Logging in")
     bridge := getBridge()
     userName := getUserName()
-    return bridge.Login(userName)
+    bridge = bridge.Login(userName)
+    if bridge != nil {
+        log.Println("Logged in")
+    }
 }
 
-func UpdateLight(id int, on bool) {
+func Update(id int, on bool) {
+    log.Printf("Updating %d\n", id)
     bridge := getBridge()
     light, e := bridge.GetLight(id)
     if e != nil {
@@ -51,6 +58,16 @@ func UpdateLight(id int, on bool) {
     if _, e := bridge.SetLightState(id, *light.State); e != nil {
         log.Fatal(e.Error())
     }
+}
+
+func IsOn(id int) bool {
+    log.Printf("Cecking light state for %d\n", id)
+    bridge := getBridge()
+    light, e := bridge.GetLight(id)
+    if e != nil {
+        log.Fatal(e.Error())
+    }
+    return light.State.On
 }
 
 func getBridge() *huego.Bridge {
