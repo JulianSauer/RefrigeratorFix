@@ -8,6 +8,8 @@ RUN cd main && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o Refrig
 
 FROM alpine:3.8
 
+RUN apk add --no-cache tzdata
+
 COPY --from=build /go/src/github.com/JulianSauer/RefrigeratorFix/main /bin/
 ADD refrigerator-temperature-log.csv /bin/
 RUN chmod 755 /bin/RefrigeratorFix
