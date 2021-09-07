@@ -6,7 +6,7 @@ Example docker-compose file:
 version: '3.6'
 services:
   refrigerator-fix:
-    image: hcr.io/juliansauer/RefrigeratorFix/refrigerator-fix
+    image: docker.pkg.github.com/juliansauer/refrigeratorfix/refrigerator-fix
     build: .
     restart: always
     volumes:
