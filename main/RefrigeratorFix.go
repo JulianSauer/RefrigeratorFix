@@ -11,9 +11,13 @@ import (
 )
 
 func main() {
-    philipshue.Login()
     configFile := config.Load()
-    currentTemperature := mobileAlerts.GetTemperature(configFile.MobileAlertsDeviceIds)
+    philipshue.Login()
+    currentTemperature, e := mobileAlerts.GetTemperature(configFile.MobileAlertsDeviceIds)
+    if e != nil {
+        philipshue.Update(configFile.SmartPlugId, true)
+        log.Fatal(e.Error())
+    }
 
     if currentTemperature < configFile.TemperatureMin {
         log.Printf("Fridge is too cold (%f°C)\n", currentTemperature)
