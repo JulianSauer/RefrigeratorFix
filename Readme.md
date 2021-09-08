@@ -7,7 +7,6 @@ version: '3.6'
 services:
   refrigerator-fix:
     image: docker.pkg.github.com/juliansauer/refrigeratorfix/refrigerator-fix
-    build: .
     restart: always
     volumes:
       - ${PWD}/config.json:/root/config.json
@@ -20,7 +19,9 @@ Example config.json:
   "philipsHueUserName": "1028d66426293e821ecfd9ef1a0731df",
   "smartPlugId": 5,
   "mobileAlertsUrl": "https://www.data199.com/api/pv1/device/lastmeasurement",
-  "mobileAlertsDeviceIds": "048FAE73A12C"
+  "mobileAlertsDeviceIds": "048FAE73A12C",
+  "temperatureMax": 8.0,
+  "temperatureMin": 7.0
 }
 
 ```

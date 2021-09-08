@@ -10,10 +10,12 @@ import (
 const CONFIG_NAME = "config.json"
 
 type ConfigFile struct {
-    PhilipsHueUserName    string `json:"philipsHueUserName"`
-    SmartPlugId           int    `json:"smartPlugId"`
-    MobileAlertsUrl       string `json:"mobileAlertsUrl"`
-    MobileAlertsDeviceIds string `json:"mobileAlertsDeviceIds"`
+    PhilipsHueUserName    string  `json:"philipsHueUserName"`
+    SmartPlugId           int     `json:"smartPlugId"`
+    MobileAlertsUrl       string  `json:"mobileAlertsUrl"`
+    MobileAlertsDeviceIds string  `json:"mobileAlertsDeviceIds"`
+    TemperatureMax        float64 `json:"temperatureMax"`
+    TemperatureMin        float64 `json:"temperatureMax"`
 }
 
 func Load() *ConfigFile {

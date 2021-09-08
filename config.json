@@ -2,5 +2,7 @@
   "philipsHueUserName": "",
   "smartPlugId": -1,
   "mobileAlertsUrl": "https://www.data199.com/api/pv1/device/lastmeasurement",
-  "mobileAlertsDeviceIds": ""
+  "mobileAlertsDeviceIds": "",
+  "temperatureMax": 8.0,
+  "temperatureMin": 7.0
 }
